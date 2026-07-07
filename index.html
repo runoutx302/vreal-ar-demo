@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>VREAL AR Demo</title>
+  <script>
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    const glbUrl = "https://github.com/runoutx302/vreal-ar-demo/raw/refs/heads/main/scene-v1.glb";
+    const iosUrl = "https://sketchfab.com/models/79020c4c14df4519b32b2af38c1e9cb6/embed-ar";
+
+    if (isAndroid) {
+      window.location.href =
+        "intent://arvr.google.com/scene-viewer/1.0?file=" + encodeURIComponent(glbUrl) +
+        "&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=" +
+        encodeURIComponent(glbUrl) + ";end;";
+    } else {
+      window.location.href = iosUrl;
+    }
+  </script>
+</head>
+<body>
+  <p>Opening AR...</p>
+</body>
+</html>
