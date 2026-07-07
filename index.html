@@ -23,7 +23,13 @@ const iosModels = {
   "Sofa.glb":"https://sketchfab.com/models/1ae0e0437b32454c8b711626fbccbf6e/embed-ar"
 };
 
-const glbUrl = "https://github.com/runoutx302/vreal-ar-demo/raw/refs/heads/main/" + model;
+const cloudflareModels = {
+  "BMW.glb": "https://pub-8080c9515e2b493b8de73c2c8d12c457.r2.dev/BMW.glb",
+  "lucid_air_mornixvreal.glb": "https://pub-8080c9515e2b493b8de73c2c8d12c457.r2.dev/lucid_air_mornixvreal.glb"
+};
+
+const glbUrl = cloudflareModels[model] ||
+  ("https://github.com/runoutx302/vreal-ar-demo/raw/refs/heads/main/" + model);
 
 if (isAndroid) {
     window.location.href =
