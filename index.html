@@ -5,10 +5,12 @@
   <title>VREAL AR Demo</title>
   <script>
     const isAndroid = /Android/i.test(navigator.userAgent);
-    const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    const glbUrl = "https://github.com/runoutx302/vreal-ar-demo/raw/refs/heads/main/scene-v1.glb";
-    const iosUrl = "https://sketchfab.com/models/79020c4c14df4519b32b2af38c1e9cb6/embed-ar";
+    const params = new URLSearchParams(window.location.search);
+    const model = params.get("model") || "scene-v1.glb";
+    const ios = params.get("ios") || "https://sketchfab.com/models/79020c4c14df4519b32b2af38c1e9cb6/embed-ar";
+
+    const glbUrl = "https://github.com/runoutx302/vreal-ar-demo/raw/refs/heads/main/" + model;
 
     if (isAndroid) {
       window.location.href =
@@ -16,7 +18,7 @@
         "&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=" +
         encodeURIComponent(glbUrl) + ";end;";
     } else {
-      window.location.href = iosUrl;
+      window.location.href = ios;
     }
   </script>
 </head>
