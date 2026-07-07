@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>VREAL AR Demo</title>
-  <script>
-    const isAndroid = /Android/i.test(navigator.userAgent);
+<meta charset="UTF-8">
+<title>VREAL AR Demo</title>
 
-    const params = new URLSearchParams(window.location.search);
-    const model = params.get("model") || "scene-v1.glb";
-    const ios = params.get("ios") || "https://sketchfab.com/models/79020c4c14df4519b32b2af38c1e9cb6/embed-ar";
+<script>
+const isAndroid = /Android/i.test(navigator.userAgent);
 
-    const glbUrl = "https://github.com/runoutx302/vreal-ar-demo/raw/refs/heads/main/" + model;
+const params = new URLSearchParams(window.location.search);
+const model = params.get("model") || "Drump.glb";
 
-    if (isAndroid) {
-      window.location.href =
-        "intent://arvr.google.com/scene-viewer/1.0?file=" + encodeURIComponent(glbUrl) +
-        "&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=" +
-        encodeURIComponent(glbUrl) + ";end;";
-    } else {
-      window.location.href = ios;
-    }
-  </script>
+const iosModels = {
+  "Pear.glb":"https://sketchfab.com/models/b2822e135ff04e2795980a2cb421efdb/embed-ar",
+  "Drump.glb":"https://sketchfab.com/models/79020c4c14df4519b32b2af38c1e9cb6/embed-ar",
+  "scene-v1.glb":"https://sketchfab.com/models/79020c4c14df4519b32b2af38c1e9cb6/embed-ar",
+  "adidas_supernova_shoes.glb":"https://sketchfab.com/models/931298615fee4f01ab7d8225e1e643b3/embed-ar",
+  "Black_Table.glb":"https://sketchfab.com/models/e7cb01cef4e04c6e989373a8a8fe8fd4/embed-ar",
+  "dior_handbag_uv5.glb":"https://sketchfab.com/models/bcbe98696e0849a7a5d7c6525e172b61/embed-ar",
+  "golden_brushed_luxury_ct.glb":"https://sketchfab.com/models/f39d1354be3e4cf189f0348cff30ed56/embed-ar",
+  "handbaguv-5.glb":"https://sketchfab.com/models/eeaf654e85b741ce9bea75a561ba0ed3/embed-ar",
+  "shoes_uv4.glb":"https://sketchfab.com/models/713375ac91c54230a29ec038c729dc49/embed-ar",
+  "Sofa.glb":"https://sketchfab.com/models/1ae0e0437b32454c8b711626fbccbf6e/embed-ar"
+};
+
+const glbUrl = "https://github.com/runoutx302/vreal-ar-demo/raw/refs/heads/main/" + model;
+
+if (isAndroid) {
+    window.location.href =
+    "intent://arvr.google.com/scene-viewer/1.0?file=" + encodeURIComponent(glbUrl) +
+    "&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=" +
+    encodeURIComponent(glbUrl) + ";end;";
+} else {
+    window.location.href = iosModels[model];
+}
+</script>
+
 </head>
 <body>
-  <p>Opening AR...</p>
+Opening AR...
 </body>
 </html>
